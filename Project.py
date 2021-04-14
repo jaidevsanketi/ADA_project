@@ -2,6 +2,7 @@ print ("Hello, ADA team")
 
 print ("Add Code below")
 
+'''
 from psaw import PushshiftAPI
 import datetime
 
@@ -16,7 +17,7 @@ submissions=list(api.search_submissions(after=start_time,
 for submissions in submissions:
     print(submissions)
     
- 
+ '''
 
 #########################   
     
