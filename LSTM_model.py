@@ -23,8 +23,8 @@ import numpy as np
 import pandas as pd
 import random
 
-from tickers_mentions import df_comments_tickers, df_comments_nb_tickers
-from text_cleaning_tool import emoji_spacer_coder, remove_punct, lower, tickers_uniform, word_count
+from daily_functions import df_comments_tickers, df_comments_nb_tickers, emoji_spacer_coder, remove_punct, lower, tickers_uniform, word_count
+
 
 
 #Load the hand treated data excel file
