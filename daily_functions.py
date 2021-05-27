@@ -9,6 +9,7 @@ import csv
 from unidecode import unidecode
 import pandas as pd
 import re
+import pickle
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -129,7 +130,7 @@ def get_tickers_list(filenamt = 'nasdaq_screener_1618406412020.csv'):
     t_list = []
     
     #from https://www.nasdaq.com/market-activity/stocks/screener we get a list of all US stocsk (Nasdaq, NYSE, Amex)
-    with open('nasdaq_screener_1618406412020.csv', 'r') as file:
+    with open('data/nasdaq_screener_1618406412020.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             t_list.append(row[0])
@@ -269,12 +270,16 @@ def word_count(string):
 
 def tokenization_inputs(df):
 
+    #Load tokenizer
+    with open('tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)    
+
     #Get comments
     comments = df.clean_body.values
     #Tockenizer tool to convert each word into a number (10000 words limit)
-    tokenizer = Tokenizer(num_words=10000)
+    #tokenizer = Tokenizer(num_words=10000)
     #Tockenize our comments
-    tokenizer.fit_on_texts(comments)
+    #tokenizer.fit_on_texts(comments)
     #Transform each comment into a list of encoded words, a list of numbers, according to token_dict
     tok_comments = tokenizer.texts_to_sequences(comments)
     #Make each coded comments same size by adding 0 before shorter comments than 30 words (padding)
