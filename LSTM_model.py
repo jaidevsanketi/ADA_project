@@ -22,14 +22,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import random
-import pickle
 
 from daily_functions import df_comments_tickers, df_comments_nb_tickers, emoji_spacer_coder, remove_punct, lower, tickers_uniform, word_count
 
 
 
 #Load the hand treated data excel file
-data = pd.read_excel(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project\data\dataset.xlsx')
+data = pd.read_excel(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project\dataset.xlsx')
 
 #######################
 #### DATA CLEANING ####
@@ -58,9 +57,7 @@ clean_data['nb_words'] = clean_data['clean_body'].apply(word_count).tolist()
 len_comments = clean_data['nb_words'].tolist()
 #Plot the distrib of len
 plt.hist(len_comments, 100)
-plt.xlabel('Nb. words')
-plt.ylabel('Nb. comments')
-plt.savefig('dist_comments_len.png')
+plt.show()
 print("90 percentile of len : ", np.percentile(len_comments, 90)) 
 #---> Only 10% of comments are longer than 26 words -> Delete all comments longer than 30 words
 clean_data = clean_data[clean_data['nb_words']<=30]
@@ -89,12 +86,6 @@ token_dict = tokenizer.word_index
 nb_tok = len(token_dict)
 #Transform each comment into a list of encoded words, a list of numbers, according to token_dict
 tok_comments = tokenizer.texts_to_sequences(comments)
-
-
-#SAVE TOKENIZER TO REUSE ON DAILY DATA
-with open('tokenizer.pickle', 'wb') as handle:
-    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
 
 #Make each coded comments same size by adding 0 before shorter comments than 30 words
 padded_comments = pad_sequences(tok_comments, maxlen=30)

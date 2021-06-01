@@ -14,7 +14,7 @@ import tensorflow as tf
 ######## PARAMETERS ########
 ############################
 
-date = [18,5,2021] 
+date = [19,5,2021]
 
 n = 3000 #Number of comments 
 m_c = 32 #Number of "more comments" replaced
@@ -32,7 +32,7 @@ year = date[2]
 lstm_model = tf.keras.models.load_model('LSTM_MODEL')
 
 #Load the data
-d_data = get_daily_comments(day, month, year, n, m_c)
+d_data = get_daily_comments(day, month, year, n)
 
 #Classification tasks
 daily_pred = classify_comments(d_data, lstm_model)
