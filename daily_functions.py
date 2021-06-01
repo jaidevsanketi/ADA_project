@@ -31,6 +31,11 @@ def classify_comments(df, model):
     
     #Get tickers mentions, keep only comments with 1 
     df = daily_tickers_cleaning(df)
+    
+    if df.empty:
+        print('No tickers mentions')
+        return df
+    
     #Clean body to be analyzed efficiently
     df = daily_text_cleaning(df)
     
@@ -111,7 +116,10 @@ def daily_tickers_cleaning(df):
     #Add column with number of tickers mentioned
     df = df_comments_nb_tickers(df)
     #Drop comments where more than 1 ticker is mentioned
-    df = df[df['nb_tick']==1]
+    if df.empty:
+        return df
+    else:
+        df = df[df['nb_tick']==1]
     
     return df
 
@@ -176,6 +184,8 @@ def df_comments_tickers(df):
     and create a new column with existing mentioned tickers for each comment
     """
     
+    
+    
     tickers_list = get_tickers_list() #All US possible tickers
     
     df['tickers'] = df['body'].apply(lambda row: check_ticker(row, tickers_list))
@@ -183,6 +193,9 @@ def df_comments_tickers(df):
     return df
 
 def df_comments_nb_tickers(df):
+    
+    if df.empty: return df
+    
     df['nb_tick'] = df.apply(nb_tickers, axis=1)
     return df
     
@@ -291,3 +304,5 @@ def tokenization_inputs(df):
     X = padded_comments
     
     return X
+
+
