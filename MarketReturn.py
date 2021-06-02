@@ -3,18 +3,20 @@ import pandas as pd
 pd.core.common.is_list_like = pd.api.types.is_list_like
 
 import pandas_datareader.data as web
-import datetime
+from datetime import datetime,timedelta
+from dateutil import parser
 
-def market_return(year,month,date):
-    start = datetime.datetime(year, month, date-1)
-    end = datetime.datetime(year, month, date)
+def market_return(x):
+    start = parser.parse(x) - timedelta(1)
+    end= parser.parse(x)
 
     SP500 = web.DataReader(['sp500'], 'fred', start, end)
-    SP500['daily_return'] = (SP500['sp500']/ SP500['sp500'].shift(1)) -1
+    SP500['daily_return'] = (SP500['sp500'] / SP500['sp500'].shift(1)) - 1
 
-    #Drop all Not a number values using drop method.
-    SP500.dropna(inplace = True)
+    # Drop all Not a number values using drop method.
+    SP500.dropna(inplace=True)
+    SP500.reset_index(inplace=True)
+    new3 = SP500.daily_return
+    return print(new3)
 
-    return print(SP500)
-
-market_return(2020,5,20)
+market_return('2021-01-05')

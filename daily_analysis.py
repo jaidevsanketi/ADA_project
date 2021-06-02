@@ -14,7 +14,7 @@ import tensorflow as tf
 ######## PARAMETERS ########
 ############################
 
-date = [19,5,2021]
+date = [20,5,2021]
 
 n = 3000 #Number of comments 
 m_c = 32 #Number of "more comments" replaced

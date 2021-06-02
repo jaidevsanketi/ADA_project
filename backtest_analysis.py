@@ -6,7 +6,7 @@ Created on Thu May 20 14:33:14 2021
 """
 import os
 
-os.chdir(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project')
+os.chdir(r'/Users/jd/OneDrive/HEC Lausanne/Sem 2/Advanced Data Analysis/ADA Project')
 
 
 import pandas as pd
@@ -15,7 +15,7 @@ import tensorflow as tf
 from daily_functions import classify_comments, daily_stats
 
 #Backtest dataset
-data = pd.read_excel(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project\data\backtest_df.xlsx')
+data = pd.read_excel('data/backtest_df.xlsx')
 data = data.drop('Unnamed: 0', axis = 1)
 
 #Load the model
@@ -47,5 +47,6 @@ for d in date_range:
     temp_d_stat['date'] = d
     
     class_backtest_data = class_backtest_data.append(temp_d_stat, ignore_index=True)
+
 
 class_backtest_data.to_excel('data/class_backtest_df.xlsx')
