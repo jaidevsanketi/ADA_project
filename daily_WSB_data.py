@@ -75,6 +75,7 @@ def get_daily_comments(day, month, year, n=1100):
         
         #Case if Thread doesn't exist
         if exist == 0:
+            nb_comm = 0
             print(problem_text)
             return
         
