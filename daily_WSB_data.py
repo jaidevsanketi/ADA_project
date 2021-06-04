@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 14 11:10:44 2021
+
+@author: Antoine
+"""
+
 import praw
 import datetime
 import pandas as pd
@@ -18,7 +25,7 @@ def connect_subreddit():
 
 
 
-def get_daily_comments(day, month, year, n=1100):
+def get_daily_comments(day, month, year, n=1000, MoreComments = 32):
     """
     This function aims to load the n most popular comments of the corresponding 
     date daily discussion thread returning a dataframe:
@@ -28,6 +35,7 @@ def get_daily_comments(day, month, year, n=1100):
         -month : Insert month as integer (1 or 2 digits) (e.g. 1; 4; 12)
         -year : Insert full year as integer (4 digits) (e.g. 2019; 2021)
         -n : Limit number of first most popular comments to load (default = 1000)
+        -MoreComments : Replace x times the "More Comments" instances (default 32 times)
     """
     
     
@@ -54,7 +62,8 @@ def get_daily_comments(day, month, year, n=1100):
     problem_text = "The Thread you are looking for doesn't exists. Possible reasons :\n\
         - Weekend day\n\
         - Holiday\n\
-        - Thread not yet created" #Text to display if no results for the query
+        - Thread not yet created\n\
+        - Thread is too heavy for the API" #Text to display if no results for the query
     
     #load thread and load data comments
     
@@ -62,22 +71,23 @@ def get_daily_comments(day, month, year, n=1100):
     
     for submission in subreddit.search(query, sort='new'):
         
+        
         #Case if thread exists 
-        if submission.title == query:
+        if submission.title == query: 
             exist = 1
             
             print(submission.title)
             submission.comment_sort = "top" #Sort top-level-comments by score
-            submission.comments.replace_more() #Replace the "More Comments" instances (default 32 times) -> Still have margin if we need only 2000 top comments
+            submission.comments.replace_more(MoreComments) #Replace the "More Comments" instances (default 32 times) -> Still have margin if we need only 2000 top comments
             daily_comm = submission.comments.list()[:n]#Keep the nth first top comments 
             nb_comm = len(daily_comm)
             
         
-        #Case if Thread doesn't exist
-        if exist == 0:
-            nb_comm = 0
-            print(problem_text)
-            return
+    #Case if Thread doesn't exist
+    if exist == 0:
+        nb_comm = 0
+        print(problem_text)
+        return False
         
         
     #Tell user about the number of comments he get VS the number of comments he wanted
@@ -99,6 +109,10 @@ def get_daily_comments(day, month, year, n=1100):
     #return Comments DataFrame
     return df
         
-    
+###################TEST###########################
 
-test = get_daily_comments(20,5,2021,2000)
+if __name__ == "__main__":   
+
+    test = get_daily_comments(4, 5, 2021, 2000, 20)
+
+
