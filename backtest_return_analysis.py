@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 #Import Dataset class_backtest_df
 data = pd.read_excel('data/class_backtest_df.xlsx')
-data=data.head(100)
+data=data.head(10)
 
 #Calculate market (S&P500) daily return for each day in the dataset
 def market_return(row):
@@ -66,7 +66,6 @@ def daily_return(row):
 #Add this column to dataset
 data['next_day_stock_ret'] = data.apply(lambda x: daily_return(x), axis =1)
 data.reset_index(inplace=True)
-
 
 
 #Remove index and unnamed columns
