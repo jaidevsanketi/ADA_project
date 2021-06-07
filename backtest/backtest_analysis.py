@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May 20 14:33:14 2021
-
-@author: Antoine
-"""
 import os
 
-os.chdir(r'/Users/jd/OneDrive/HEC Lausanne/Sem 2/Advanced Data Analysis/ADA Project')
-
+#os.chdir(...)
 
 import pandas as pd
 import tensorflow as tf
@@ -25,7 +18,6 @@ lstm_model = tf.keras.models.load_model('LSTM_MODEL')
 date_range = data.date.tolist()
 date_range = list(set(date_range))
 date_range.sort()
-
 
 #New classifier dataframe
 class_backtest_data = pd.DataFrame(columns=['date', 'ticker','popularity', 'frac_bull', 'frac_bear'])
@@ -47,6 +39,5 @@ for d in date_range:
     temp_d_stat['date'] = d
     
     class_backtest_data = class_backtest_data.append(temp_d_stat, ignore_index=True)
-
 
 class_backtest_data.to_excel('data/class_backtest_df.xlsx')
