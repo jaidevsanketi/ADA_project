@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 19 14:54:01 2021
-
-@author: Antoine
-"""
-
 import csv
 from unidecode import unidecode
 import pandas as pd
@@ -57,7 +50,6 @@ def classify_comments(df, model):
     df = df.loc[:,['id', 'body', 'tickers', 'pred_mood', 'score']]
     
     return df
-
 
 
 ####################################
@@ -284,7 +276,7 @@ def word_count(string):
 def tokenization_inputs(df):
 
     #Load tokenizer
-    with open('tokenizer.pickle', 'rb') as handle:
+    with open('/traning/tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)    
 
     #Get comments
