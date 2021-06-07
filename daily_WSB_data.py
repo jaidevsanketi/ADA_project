@@ -1,14 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr 14 11:10:44 2021
-
-@author: Antoine
-"""
-
 import praw
 import datetime
 import pandas as pd
-
 
 def connect_subreddit():
 
@@ -23,8 +15,6 @@ def connect_subreddit():
     subreddit = reddit.subreddit('wallstreetbets')
     return subreddit
 
-
-
 def get_daily_comments(day, month, year, n=1000, MoreComments = 32):
     """
     This function aims to load the n most popular comments of the corresponding 
@@ -37,7 +27,6 @@ def get_daily_comments(day, month, year, n=1000, MoreComments = 32):
         -n : Limit number of first most popular comments to load (default = 1000)
         -MoreComments : Replace x times the "More Comments" instances (default 32 times)
     """
-    
     
     #Transform the input date to strings
     full_date = datetime.date(year, month, day)
