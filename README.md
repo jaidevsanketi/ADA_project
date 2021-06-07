@@ -7,10 +7,17 @@ This project aims to create a sentiment analysis tool which analyzes the daily d
 
 ## Requirements
 
-Few librairies are needed to run the project. Those are listed below:
+Few librairies are required to run the project. Those are listed below:
 
-* Item 1
-* Item 2
+* Numpy
+* Pandas
+* Sklearn
+* Statsmodels
+* Pickle
+* Praw
+* Yfinance
+* Random
+* 
 
 ## Run the Daily Analysis
 
