@@ -17,6 +17,8 @@ Few librairies are required to run the project. Those are listed below:
 * Praw
 * Yfinance
 * Matplotlib
+* Pandas_datareader
+* Datetime
 * Random
 * 
 
