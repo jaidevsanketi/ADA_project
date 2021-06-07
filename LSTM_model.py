@@ -192,7 +192,7 @@ cf.columns = col
 print(cf)
 acc = accuracy_score(y_true=Y_te, y_pred=pred, normalize=True, sample_weight=None)
 print('Accuracy score : ', acc)
-cf.to_excel('./data/class_matrix_test.xlsx')
+cf.to_excel('data/class_matrix_test.xlsx')
 
 ##########################
 ####### SAVE MODEL #######
