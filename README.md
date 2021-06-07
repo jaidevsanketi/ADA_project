@@ -16,6 +16,7 @@ Few librairies are required to run the project. Those are listed below:
 * Pickle
 * Praw
 * Yfinance
+* Matplotlib
 * Random
 * 
 
