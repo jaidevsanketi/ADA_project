@@ -19,6 +19,9 @@ Few librairies are required to run the project. Those are listed below:
 * Matplotlib
 * Pandas_datareader
 * Datetime
+* Re
+* Csv
+* Unidecode
 * Random
 * 
 
