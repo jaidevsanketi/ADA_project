@@ -9,7 +9,6 @@ from sklearn.metrics import accuracy_score
 
 #Import Dataset class_backtest_df
 data = pd.read_excel('data/class_backtest_df.xlsx')
-data=data.head(10)
 
 #Calculate market (S&P500) daily return for each day in the dataset
 def market_return(row):
@@ -85,6 +84,8 @@ with pd.option_context('display.max_rows', None,
                        'display.precision', 3,
                        ):
     print(data)
+data.to_excel('data/backtest_market_stock_return_df.xlsx')
+
 
 #Classification
 print('Redditers accuracy of predicting a stock rise is:' ,accuracy_score(data['Stock_Up'], data['Reddit_Bullish']))
@@ -97,5 +98,4 @@ reg = LinearRegression().fit(X, y)
 print('The R2 value is:',reg.score(X, y))
 print('The coefficients are:',reg.coef_)
 print('The intercept is:',reg.intercept_)
-#data.to_excel('data/backtest_market_stock_return_df.xlsx')
 
