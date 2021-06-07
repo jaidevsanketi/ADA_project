@@ -276,7 +276,7 @@ def word_count(string):
 def tokenization_inputs(df):
 
     #Load tokenizer
-    with open('training/tokenizer.pickle', 'rb') as handle:
+    with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)    
 
     #Get comments
