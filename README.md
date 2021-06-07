@@ -23,7 +23,6 @@ Few librairies are required to run the project. Those are listed below:
 * Csv
 * Unidecode
 * Random
-* 
 
 ## Run the Daily Analysis
 
