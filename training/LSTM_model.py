@@ -1,6 +1,6 @@
-import os
-
-#os.chdir(...)
+#IMPORTANT : BEFORE RUNING THIS FILE, ADD PATH TO PROJECT FOLDER BELOW !!!
+import sys
+sys.path.insert(0, '...')
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
