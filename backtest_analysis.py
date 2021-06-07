@@ -1,51 +1,41 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May 20 14:33:14 2021
-
-@author: Antoine
-"""
 import os
-
-os.chdir(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project')
+os.chdir(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\ADA_project-main')
 
 
 import pandas as pd
-import tensorflow as tf
+from sklearn.metrics import confusion_matrix, accuracy_score
+import statsmodels.api as sm
 
-from daily_functions import classify_comments, daily_stats
+#Load the classified/analyzed/returns matched dataset
+data = pd.read_excel('data/backtest_market_stock_return_df.xlsx')
 
-#Backtest dataset
-data = pd.read_excel(r'C:\Users\Antoine\Desktop\MScF\AdvancedDataAnalysis\Project\data\backtest_df.xlsx')
-data = data.drop('Unnamed: 0', axis = 1)
+#1st simple regression
+X = data[['frac_bull']]
+X = sm.add_constant(X)
+Y = data[['Stock_Up']]
 
-#Load the model
-lstm_model = tf.keras.models.load_model('LSTM_MODEL')
+reg1 = sm.OLS(Y,X)
+res1 = reg1.fit()
 
-#Dates range
-date_range = data.date.tolist()
-date_range = list(set(date_range))
-date_range.sort()
+print(res1.summary())
 
 
-#New classifier dataframe
-class_backtest_data = pd.DataFrame(columns=['date', 'ticker','popularity', 'frac_bull', 'frac_bear'])
+#2nd simple regression
+X = data[['frac_bull', 'popularity', 'next_day_market_ret']]
+X = sm.add_constant(X)
+Y = data[['Stock_Up']]
 
-for d in date_range:
-    
-    #Get data concerning the date
-    temp_d_data = data[data['date'] == d]
-    
-    #Classification tasks
-    temp_d_pred = classify_comments(temp_d_data, lstm_model)
-    
-    if temp_d_pred.empty: continue
-    
-    #Analysis
-    temp_d_stat = daily_stats(temp_d_pred)
-    temp_d_stat.reset_index(inplace=True)
-    temp_d_stat = temp_d_stat.rename(columns = {'index':'ticker', 'Popularity':'popularity', '% Bullish':'frac_bull', '% Bearish':'frac_bear'})
-    temp_d_stat['date'] = d
-    
-    class_backtest_data = class_backtest_data.append(temp_d_stat, ignore_index=True)
+reg2 = sm.OLS(Y,X)
+res2 = reg2.fit()
 
-class_backtest_data.to_excel('data/class_backtest_df.xlsx')
+print(res2.summary())
+
+#3rd simple regression
+X = data[['frac_bull', 'popularity', 'next_day_market_ret']]
+X = sm.add_constant(X)
+Y = data[['Stock_Up']]
+
+reg2 = sm.OLS(Y,X)
+res2 = reg2.fit()
+
+print(res2.summary())
