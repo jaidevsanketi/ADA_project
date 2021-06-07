@@ -32,6 +32,6 @@ To run a daily analysis, user needs to run the python file called "daily_analysi
 
 | SURNAME Name           | Student ID |
 | ---------------------- | ---------- |
-| Sanketi Jaidev         |  xxxxxxxx  |
-| Hansenne Jean-Baptiste |  xxxxxxxx  |
-| Tissot Antoine         |  17417916  |
+| SANKETI Jaidev         |  xxxxxxxx  |
+| HANSENNE Jean-Baptiste |  xxxxxxxx  |
+| TISSOT Antoine         |  17417916  |
