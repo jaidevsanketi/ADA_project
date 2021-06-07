@@ -10,12 +10,12 @@ import tensorflow as tf
 date = [3,6,2021] 
 
 n = 3000 #Number of comments 
-m_c = 32 #Number of "more comments" replaced
-
 
 ############################
 ######### ANALYSIS #########
 ############################
+
+m_c = 32 #Number of "more comments" replaced
 
 day = date[0]
 month = date[1]
