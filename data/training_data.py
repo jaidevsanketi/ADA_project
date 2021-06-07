@@ -1,7 +1,3 @@
-#IMPORTANT : BEFORE RUNING THIS FILE, ADD PATH TO PROJECT FOLDER BELOW !!!
-import sys
-sys.path.insert(0, '...')
-
 import pandas as pd
 
 from daily_WSB_data import get_daily_comments
