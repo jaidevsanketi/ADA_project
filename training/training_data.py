@@ -1,7 +1,11 @@
+#IMPORTANT : BEFORE RUNING THIS FILE, ADD PATH TO PROJECT FOLDER BELOW !!!
+import sys
+sys.path.insert(0, '...')
+
 import pandas as pd
 
-from ADA_project.daily_WSB_data import get_daily_comments
-from ADA_project.daily_functions import df_comments_tickers, keep_comments_tickers
+from daily_WSB_data import get_daily_comments
+from daily_functions import df_comments_tickers, keep_comments_tickers
 
 n = 2000 #Number of comments per day to construct dataset
 date1 = [27,4,2021]
