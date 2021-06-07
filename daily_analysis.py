@@ -36,7 +36,8 @@ try:
 
     #Print results
     print('\n\n\n')
-    print('Daily Discussion Thread Analysis: (Date: %d.%d.%d)'%(day, month, year))
+    print('Daily Discussion Thread Analysis: ')
+    print('(Date: %d.%d.%d)'%(day, month, year))
     print('')
     print(daily_stat)
 
