@@ -1,7 +1,3 @@
-#IMPORTANT : BEFORE RUNING THIS FILE, ADD PATH TO PROJECT FOLDER BELOW !!!
-import sys
-sys.path.insert(0, '...')
-
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import tensorflow as tf
@@ -22,7 +18,7 @@ random.seed(1234)
 tf.random.set_seed(1234)
 
 #Load the hand treated data excel file
-data = pd.read_excel('./data/dataset.xlsx')
+data = pd.read_excel('data/dataset.xlsx')
 
 #######################
 #### DATA CLEANING ####
@@ -202,5 +198,5 @@ cf.to_excel('./data/class_matrix_test.xlsx')
 ####### SAVE MODEL #######
 ##########################
 
-model.save('./LSTM_MODEL')   #To load: model_test = tf.keras.models.load_model('LSTM_MODEL')
+model.save('LSTM_MODEL')   #To load: model_test = tf.keras.models.load_model('LSTM_MODEL')
 
