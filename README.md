@@ -28,3 +28,10 @@ Few librairies are required to run the project. Those are listed below:
 
 To run a daily analysis, user needs to run the python file called "daily_analysis.py" but first, he will need to change the parameters in the mentioned file (the date he wants the analysis to be done on and the number of comments he wants to load for the analysis)
 
+## Authors
+
+| SURNAME Name           | Student ID |
+| ---------------------- | ---------- |
+| Sanketi Jaidev         |  xxxxxxxx  |
+| Hansenne Jean-Baptiste |  xxxxxxxx  |
+| Tissot Antoine         |  17417916  |
