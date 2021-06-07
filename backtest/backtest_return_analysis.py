@@ -42,7 +42,6 @@ def market_return(row):
 #Add this column to dataset
 data['next_day_market_ret'] = data.apply(lambda x: market_return(x), axis =1)
 
-
 #Calculate next day's return for each of the 5 stocks for each day in the dataset
 def daily_return(row):
     x=row['ticker']
@@ -66,7 +65,6 @@ def daily_return(row):
 data['next_day_stock_ret'] = data.apply(lambda x: daily_return(x), axis =1)
 data.reset_index(inplace=True)
 
-
 #Remove index and unnamed columns
 data.drop(data.columns[[0, 1]], axis = 1, inplace = True)
 
@@ -84,20 +82,5 @@ with pd.option_context('display.max_rows', None,
                        'display.precision', 3,
                        ):
     print(data)
+    
 data.to_excel('data/backtest_market_stock_return_df.xlsx')
-
-
-#Classification
-print('Redditers accuracy of predicting a stock rise is:' ,accuracy_score(data['Stock_Up'], data['Reddit_Bullish']))
-
-
-#Regression
-X=data.iloc[:,[2,3,6]]
-y=data.iloc[:,7]
-reg = LinearRegression().fit(X, y)
-print('The R2 value is:',reg.score(X, y))
-print('The coefficients are:',reg.coef_)
-print('The intercept is:',reg.intercept_)
-
-######################
-
