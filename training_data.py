@@ -78,7 +78,7 @@ training_df_3 = training_df[bound_2:]
 training_df.to_csv('./data/training_data.csv', index=False, sep='\t') #Save df into .csv with tab separation
 
 #Save datasets as .xlsx
-training_df_1.to_excel('./data/training_data_1.xlsx')
-training_df_2.to_excel('./data/training_data_2.xlsx')
-training_df_3.to_excel('./data/training_data_3.xlsx')
+training_df_1.to_excel('data/training_data_1.xlsx')
+training_df_2.to_excel('data/training_data_2.xlsx')
+training_df_3.to_excel('data/training_data_3.xlsx')
 
