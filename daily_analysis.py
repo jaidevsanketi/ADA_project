@@ -1,15 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon May 17 18:06:45 2021
-
-@author: Antoine
-"""
 from daily_WSB_data import get_daily_comments
 from daily_functions import classify_comments, daily_stats
 
 import tensorflow as tf
-
-
 
 ############################
 ######## PARAMETERS ########
